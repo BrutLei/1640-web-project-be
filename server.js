@@ -1,14 +1,15 @@
-const http = require('http')
+const express = require("express");
+require("dotenv").config();
 
-const hostname = 'localhost';
-const port = 8000;
+const app = express();
+const port = process.env.PORT || 8080;
+const hostName = process.env.HOST_NAME;
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World\n Xin chao');
-})
+// Khai báo route
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-})
+app.listen(port, () => {
+  console.log(`Example app listening on http://localhost:${port}`);
+});
