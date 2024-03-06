@@ -1,8 +1,19 @@
 const express = require('express');
-require('dotenv').config();
+const connection = require('./src/config/database');
+require('dotenv/config');
 
 const app = express();
 const port = process.env.PORT || 8080;
+
+const query = 'SELECT * from userTest';
+connection.query(query, (err, results, fields) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(results);
+    console.log(fields);
+  }
+});
 
 app.use(express.json());
 
