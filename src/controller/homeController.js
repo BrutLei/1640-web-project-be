@@ -10,8 +10,20 @@ const handleFetchAllUsers = async (req, res) => {
       console.log(err);
     } else {
       console.log(rows);
-      console.log(fields);
+      //   console.log(fields);
       return res.status(200).send(rows);
+    }
+  });
+};
+
+const createNewUser = async (req, res) => {
+  const query = 'INSERT INTO usertests (name, email, city, createdAt, updatedAt) value (?, ?, ?, ?, ?)';
+  connection.query(query, [req.name, req.email, req.city, new Date(), new Date()], (err, result, fields) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+      console.log(fields);
     }
   });
 };
