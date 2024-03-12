@@ -14,5 +14,6 @@ initWebRoutes(app);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
+  console.log(typeof process.env.DB_PASSWORD);
   console.log(`Example app listening on http://localhost:${port}`);
 });
