@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Faculty.belongsToMany(models.Group, {through: GroupFaculty});
+      Faculty.hasMany(models.ClosedDate);
+      Faculty.hasMany(models.Article);
     }
   }
   Faculty.init({

@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class AcademicYear extends Model {
+  class GroupFaculty extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,15 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      AcademicYear.hasMany(models.ClosedDate);
-      AcademicYear.hasMany(models.Article);
     }
   }
-  AcademicYear.init({
-    year: DataTypes.DATEONLY
+  GroupFaculty.init({
+    groupId: DataTypes.INTEGER,
+    facultyId: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'AcademicYear',
+    modelName: 'GroupFaculty',
   });
-  return AcademicYear;
+  return GroupFaculty;
 };

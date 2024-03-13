@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Article.belongsTo(models.User);
+      Article.belongsTo(models.Faculty);
+      Article.belongsTo(models.AcademicYear);
     }
   }
   Article.init(
@@ -16,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       documentUrl: DataTypes.STRING,
       submittedDate: DataTypes.DATE,
-      reviewStatus: DataTypes.ENUM,
+      reviewStatus: DataTypes.ENUM('Reviewing', 'Approve', 'Reject'),
+      userid: DataTypes.INTEGER,
       facultyId: DataTypes.INTEGER,
       academicYearId: DataTypes.INTEGER,
     },

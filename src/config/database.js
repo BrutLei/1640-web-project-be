@@ -12,4 +12,16 @@ const connection = mysql.createPool({
   queueLimit: 10,
 });
 
-module.exports = connection;
+const db_config = {
+  username: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '123456',
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  dialect: 'mysql',
+  dialectOptions: {
+    bigNumberStrings: true,
+  },
+}
+
+module.exports = {connection, db_config};
